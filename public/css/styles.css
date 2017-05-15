@@ -116,7 +116,7 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background: url(../img/banner-bg2.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -160,8 +160,17 @@ h6 {
     }
 }
 
-@media(max-width:998px) and (min-width: 768px) {
+@media(max-width:991px) and (min-width: 768px) {
+  .margin-top-50 {
+    margin-top: 50px;
+  }
+  .margin-top-90 {
+    margin-top: 90px;
+  }
 
+  .margin-top-110 {
+    margin-top:110px;
+  }
 }
 
 footer {
@@ -190,5 +199,11 @@ p.copyright {
 .border-solid {
   border-radius: 7px;
   border: 15px solid black;
+}
 
+.navy-blue {
+  color:#00008B!important;
+}
+.red-font {
+  color:#C81010!important;
 }
