@@ -39,6 +39,15 @@ h6 {
     background-size: cover;
 }
 
+.shop-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/shop-stock.jpg) no-repeat center center;
+    background-size: cover;
+}
+
 .intro-message {
     position: relative;
     padding-top: 20%;
@@ -120,13 +129,20 @@ h6 {
     background-size: cover;
 }
 
-.banner h2 {
+.shop-banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: url(../img/shop-banner.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2, .shop-banner h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 3em;
 }
 
-.banner ul {
+.banner ul, .shop-banner ul {
     margin-bottom: 0;
 }
 
@@ -192,8 +208,9 @@ p.copyright {
 }
 
 .v-center {
-  margin-top:25%;
-  margin-bottom:25%;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
 }
 
 .border-solid {
@@ -204,6 +221,9 @@ p.copyright {
 .navy-blue {
   color:#00008B!important;
 }
-.red-font {
+.red {
   color:#C81010!important;
+}
+.black {
+  color:#000!important;
 }

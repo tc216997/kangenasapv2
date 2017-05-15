@@ -1,5 +1,5 @@
 {
-  "name": "kangenwater",
+  "name": "Get Kangen ASAP",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tc216997/test_page.git"
+    "url": "git+https://github.com/tc216997/test_pagev2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tc216997/test_page/issues"
+    "url": "https://github.com/tc216997/test_pagev2/issues"
   },
-  "homepage": "https://github.com/tc216997/test_page#readme",
+  "homepage": "https://github.com/tc216997/test_pagev2#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
