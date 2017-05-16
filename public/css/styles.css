@@ -29,7 +29,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/stock-photo.jpg) no-repeat center center;
+    background: url("https://image.ibb.co/gEHNLk/stock_photo.jpg") no-repeat center center;
     background-size: cover;
 }
 
@@ -38,7 +38,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/shop-stock.jpg) no-repeat center center;
+    background: url("https://image.ibb.co/nFP2Lk/shop_stock.jpg") no-repeat center center;
     background-size: cover;
 }
 
@@ -119,14 +119,14 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg2.jpg) no-repeat center center;
+    background: url("https://image.ibb.co/cVH6fk/banner_bg2.jpg") no-repeat center center;
     background-size: cover;
 }
 
 .shop-banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/shop-banner.jpg) no-repeat center center;
+    background: url("https://image.ibb.co/fChHmQ/shop_banner2.jpg") no-repeat center center;
     background-size: cover;
 }
 
@@ -170,16 +170,19 @@ h6 {
     }
 }
 
-@media(max-width:991px) and (min-width: 768px) {
+@media(max-width:991px) and (min-width: 767px) {
   .margin-top-50 {
     margin-top: 50px;
   }
   .margin-top-90 {
     margin-top: 90px;
   }
-
   .margin-top-110 {
     margin-top:110px;
+  }
+  .mobile-flex-center {
+    display:flex;
+    align-items:center;
   }
 }
 
@@ -231,7 +234,7 @@ p.copyright {
   margin-top:15px!important;
 }
 
-.button {
+.button-3d {
     -webkit-border-radius: 10px;
     -webkit-box-shadow:
         0px 3px rgba(128,128,128,1), /* gradient effects */
@@ -245,7 +248,7 @@ p.copyright {
     -webkit-transition: -webkit-box-shadow .1s ease-in-out;
 }
 
-.button span {
+.button-3d span {
   background-color: #E8E8E8;
 
   background-image:
@@ -306,16 +309,16 @@ p.copyright {
   text-shadow: 0px 1px #fff, 0px -1px #262F33;
 }
 
-.button span:hover {
+.button-3d span:hover {
   color: #AEBF3B;
   text-shadow: 0px -1px #97A63A;
   cursor: pointer;
 }
 
-.button:focus{
+.button-3d:focus{
   outline:none;
 }
-.button:active {
+.button-3d:active {
   -webkit-box-shadow:
   0px 3px rgba(128,128,128,1),
   0px 4px rgba(118,118,118,1),
@@ -326,21 +329,6 @@ p.copyright {
   0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
 }
 
-.button:active span{
+.button-3d:active span{
   -webkit-transform: translate(0, 5px); /* depth of button press */
-}
-
-.button span:after {
-
-  display: block;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  right: 14px;
-  top: 12px;
-  font-family: 'Cabin';
-  font-weight: 700;
-  color: #AEBF3B;
-  text-shadow: 0px 1px #fff, 0px -1px #97A63A;
-  font-size: 26px;
 }

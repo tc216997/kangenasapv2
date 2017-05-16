@@ -10,7 +10,7 @@ server.set('port', process.env.PORT || 3000 );
 server.use(compression());
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(express.static(path.resolve(__dirname, 'public')));
-/*
+
 let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -23,11 +23,11 @@ let transporter = nodemailer.createTransport({
         expires: 3600
     }
 });
-*/
+
 server.get(/^\/(index)?$/, (req, res) => {
   res.sendFile(getFile('index'));
 });
-/*
+
 server.get('/science/', (req, res) => {
   res.sendFile(getFile('science'));
 });
@@ -39,11 +39,11 @@ server.get('/testimonials/', (req, res) => {
 server.get('/demo/', (req, res) => {
   res.sendFile(getFile('demo'));
 });
-*/
+
 server.get('/shop/', (req, res) => {
   res.sendFile(getFile('shop'));
 });
-/*
+
 server.get('/contact/', (req, res) => {
   res.sendFile(getFile('contact'));
 });
@@ -98,7 +98,7 @@ server.use((req, res) => {
 server.use((error, req, res, next) => {
   res.status(500).sendFile("500.html", {"root": path.resolve(__dirname, 'public')});;
 });
-*/
+
 server.listen(server.get('port'), () => {
   console.log('server listening at port ' + server.get('port'));
 });
