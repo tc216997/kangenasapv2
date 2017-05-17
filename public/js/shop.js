@@ -1,5 +1,4 @@
-$(function(){
-  console.log('loaded')
+$(document).ready(function(){
   $('.button-3d').each(function(){
     $(this).unbind().click(function(){
       let val = $(this).val();
@@ -8,27 +7,36 @@ $(function(){
       $('.dropdown').click(function(){
         $('.payment-options').unbind().click(function(){
           let file = val + '-' + $(this).attr('data-payment');
-          removeEmail();
+          hideEmail();
           showDownloadDiv();
-          console.log('/pdf?filename=' +  file)
           $('#machine-pdf').attr('href', '/pdf?filename=' +  file)
         });
       });
     });
   });
+  $('#finance-modal').on('hidden.bs.modal', function(){
+    showEmail();
+    hideDownloadDiv();
+  });
 });
 
 function changeModalTitle(machine) {
   let title = 'Please choose your payment options for '  + machine;
-  console.log(machine)
-  console.log(title);
   $('.modal-title').text(title);
 }
 
-function removeEmail() {
-  $('#modal-contact').remove();
+function showEmail(){
+  $('#modal-contact').show();
+}
+
+function hideEmail() {
+  $('#modal-contact').hide();
 }
 
 function showDownloadDiv() {
   $('#download-div').slideDown('slow');
+}
+
+function hideDownloadDiv() {
+  $('#download-div').hide();
 }
