@@ -178,6 +178,11 @@ h6 {
     margin-top: 0;
   }
 }
+@media (min-width:992px) {
+  .modal {
+    top:10%!important;
+  }
+}
 
 @media(max-width:991px) and (min-width: 767px) {
   .margin-top-50 {
@@ -195,6 +200,22 @@ h6 {
   .mobile-flex-center {
     display:flex;
     align-items:center;
+  }
+  .modal > h2 {
+    word-wrap: break-word;
+  }
+}
+
+@media(max-width:991px) {
+  .modal{
+    top:5%!important;
+  }
+}
+
+@media(max-width:480px) {
+  #pdf-download-text {
+    margin-left: 20px;
+    margin-right:20px;
   }
 }
 
@@ -236,6 +257,18 @@ p.copyright {
 .black {
   color:#000!important;
 }
+.bootstrap-primary-blue {
+  color:#5bc0de;
+}
+
+.button3d-green {
+  color:#6cbf3b;
+}
+
+.amazon-orange {
+  color:#FF9900;
+}
+
 .background-orange {
   background-color:#ff9900!important;
 }
@@ -244,6 +277,10 @@ p.copyright {
 }
 .margin-top-15 {
   margin-top:15px!important;
+}
+
+.margin-bottom-15 {
+  margin-bottom:15px!important;
 }
 
 .button-3d {
@@ -347,17 +384,40 @@ p.copyright {
 /*  3d button end */
 
 #finance-modal{
-  top:7%;
-  right:15px;
+  top:25%;
   left:15px;
 }
 
 #finance-modal-dialog {
   width:auto;
   height:auto;
-  vertical-align: middle;
 }
 
 .font-150 {
   font-size:150px!important;
+}
+.font-20 {
+  font-size:20px!important;
+}
+.font-30 {
+  font-size:30px!important;
+}
+
+.dropdown-menu {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(-50%, 0);
+  font-size:20px;
+}
+.dropdown-menu > li > a {
+  white-space: normal;
+}
+.dropdown-menu > li > a:hover {
+    background-color: #31b0d5;
+    background-image: none;
+}
+
+.display-none {
+  display: none;
 }
