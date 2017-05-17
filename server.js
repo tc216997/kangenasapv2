@@ -63,26 +63,7 @@ server.post('/send-email', (req, res) => {
   let senderName = req.body.name;
   let emailSubject = req.body.subject;
   let emailMsg = req.body.message;
-  let googleRes = req.body['g-recaptcha-response'];
-  request.get({
-    url: url,
-    json: true,
-    headers: {'User-Agent': 'request'}
-  }, (error, response, data) => {
-    if (error) {
-      console.log('Error: ', error );
-    } else if (response.statusCode !== 200) {
-      console.log('Status: ', response.statusCode);
-    } else {
-      if(!data.success) {
-        res.status(403).sendFile(getFile('invalid-captcha'));
-      } else {
-        sendEmail(emailAddress, senderName, emailSubject, emailMsg, res);
-      }
-    }
-  });
-
-
+  sendEmail(emailAddress, senderName, emailSubject, emailMsg, res);
 });
 
 // 404 and 500 status error handling
@@ -109,17 +90,16 @@ function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
   let mailOptions = {
     from: sender + ' ' + senderAddress,
     to: process.env.EMAILUSER,
-    subject: emailSubject,
-    html: '<strong><br>Customer name:</strong>  ' + sender + '<br><strong>Customer email address:  </strong>' + senderAddress  + '<br><strong>has sent you the following message:  </strong><br>' + emailMsg,
+    subject: sender + ' ' + emailSubject,
+    html: '<strong>Customer name:</strong>  ' + sender + '<br><br><strong>Customer email:  </strong>' + senderAddress  + '<br><br><strong>Message:  </strong><br>' + emailMsg,
   }
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      res.status(500).sendFile(getFile('bad-email'));
+      res.json({ error:true});
       return console.log(err);
     } else {
-      //console.log('email %s sent: %s', info.messageId, info.response );
-      res.status(200).redirect('/email-sent');
+      console.log('email %s sent: %s', info.messageId, info.response);
+      res.json({ error:null});
     }
-
   });
 }

@@ -97,14 +97,9 @@ function emailValidator() {
             },
             message: {
                 validators: {
-                      stringLength: {
-                        min: 10,
-                        max: 200,
-                        message:'Please enter at least 10 characters and no more than 200'
-                    },
-                    notEmpty: {
-                        message: 'Please enter a message'
-                    }
+                      notEmpty: {
+                          message: 'Please enter a message'
+                      }
                     }
                 }
             }
@@ -119,12 +114,26 @@ function emailValidator() {
             // Prevent form submission
             e.preventDefault();
             // Get the form instance
-            var $form = $(e.target);
+            let $form = $(e.target);
+            let formData = $(e.target).serialize()
             // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
+            let bv = $form.data('bootstrapValidator');
             // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
+            $.ajax({
+              url: '/send-email',
+              type:'POST',
+              data: formData,
+              dataType:'json',
+              success: function(response) {
+                if (response.error) {
+                  // show error message
+                  $('#error_message').slideDown({opacity:'show'}, 'slow');
+                } else {
+                  // show ok message
+                  $('#success_message').slideDown({ opacity: "show" }, "slow")
+                  console.log('yay it went through!');
+                }
+              }
+            });
         });
 }
