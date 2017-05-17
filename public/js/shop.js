@@ -20,7 +20,7 @@ $(function(){
 });
 
 function changeModalTitle() {
-  let title = 'Please choose your payment options for the '  + name;
+  let title = 'Please choose your payment options for '  + name;
   $('.modal-title').text(title);
 }
 
