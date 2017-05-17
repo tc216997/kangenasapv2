@@ -4,6 +4,7 @@ $(function(){
     $(this).unbind().click(function(){
       let val = $(this).val();
       let name = $(this).attr('name');
+      console.log(name)
       changeModalTitle();
       $('.dropdown').click(function(){
         $('.payment-options').unbind().click(function(){
