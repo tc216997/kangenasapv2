@@ -393,6 +393,11 @@ p.copyright {
   height:auto;
 }
 
+#email-modal {
+  width: auto;
+  height: auto;
+}
+
 .font-150 {
   font-size:150px!important;
 }

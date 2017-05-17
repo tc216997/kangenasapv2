@@ -64,30 +64,24 @@ server.post('/send-email', (req, res) => {
   let emailSubject = req.body.subject;
   let emailMsg = req.body.message;
   let googleRes = req.body['g-recaptcha-response'];
-  let secret = process.env.SECRET;
-  let url = 'https://www.google.com/recaptcha/api/siteverify?secret=' + secret + "&response=" + googleRes //+ "&remoteip=" + req.connection.remoteAddress;
-
-  if (!req.body['g-recaptcha-response']) {
-    return res.sendFile(getFile('invalid-captcha'));
-  } else {
-    request.get({
-      url: url,
-      json: true,
-      headers: {'User-Agent': 'request'}
-    }, (error, response, data) => {
-      if (error) {
-        console.log('Error: ', error );
-      } else if (response.statusCode !== 200) {
-        console.log('Status: ', response.statusCode);
+  request.get({
+    url: url,
+    json: true,
+    headers: {'User-Agent': 'request'}
+  }, (error, response, data) => {
+    if (error) {
+      console.log('Error: ', error );
+    } else if (response.statusCode !== 200) {
+      console.log('Status: ', response.statusCode);
+    } else {
+      if(!data.success) {
+        res.status(403).sendFile(getFile('invalid-captcha'));
       } else {
-        if(!data.success) {
-          res.status(403).sendFile(getFile('invalid-captcha'));
-        } else {
-          sendEmail(emailAddress, senderName, emailSubject, emailMsg, res);
-        }
+        sendEmail(emailAddress, senderName, emailSubject, emailMsg, res);
       }
-    });
-  }
+    }
+  });
+
 
 });
 

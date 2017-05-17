@@ -13,11 +13,12 @@
     <link href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Boostrap validator css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
@@ -49,9 +50,6 @@
                     </li>
                     <li>
                         <a><strong style="color:black;">Shop</strong></a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -332,14 +330,88 @@
                     </div>
                   </div>
                    <!--./download pdf div-->     
-                  <a href="contact.html" id="modal-contact"><h2 class="text-center">Have questions? Email us today!</h2></a>             
+                  <a data-toggle="modal" href="#email-modal" id="finance-modal-email"><h2 class="text-center">Have questions? Email us today!</h2></a>             
                 </div>
               </div>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    
+    <!--email modal-->
+      <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size:40px;">×</button>
+              <h4 class="email-modal-title text-center" style="font-size:32px; margin-top:38px; margin-bottom:20px;">Please enter your information</h4>
+            </div>
+            <div class="modal-body" style="padding-bottom: 120px;">
+              <!-- Form Name -->
+              <form class="well form-horizontal" id="contact_form" onsubmit="return false;">
+                <fieldset>
+                <!-- text input first name-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Name</label>  
+                    <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input  name="name" placeholder="Name" class="form-control" type="text" value="John Doe">
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Text input email address-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">E-Mail</label>  
+                    <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                      <input name="email" placeholder="E-Mail Address" class="form-control" type="text" value="john.doe@gmail.com">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Text input subject-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" >Subject</label> 
+                      <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="subject" placeholder="Subject" class="form-control"  type="text" value="John doe wants a machine">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Text area message -->  
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">What do you want to ask us about?</label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                          <textarea class="form-control" name="message" placeholder="Your message" style="resize: vertical;">Hi there i want a machine!</textarea>
+                        </div>
+                    </div>
+                  </div>
+
+                  <!-- Success message -->
+                  <div class="alert alert-success display-none text-center" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+                  <div class="alert alert-danger display-none text-center" role="alert" id="error_message">Uh-oh <i class="glyphicon glyphicon-thumbs-down"></i> Something went wrong. Please try sending the message again.</div>
+                  <div></div>
+                  <!-- Button -->
+                  <div class="form-group margin-top-15">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                      <button id="send-email" type="submit" class="btn btn-primary" style="float:right;">Send <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                  </div>
+                </fieldset>
+            </form>
+          </div>
+        
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+      </div><!--./email modal-->
 
     <div class="shop-banner">
 
@@ -352,7 +424,7 @@
                 <div class="col-lg-6 col-width-50">
                     <ul class="list-inline banner-social-buttons shop-social-button">
                         <li>
-                            <a href="/contact.html" class="btn btn-default btn-lg">
+                            <a class="btn btn-primary btn-lg" data-toggle="modal" href="#email-modal">
                               <i class="fa"></i>
                               <span class="network-name">Email</span></a>
                         </li>
@@ -412,7 +484,7 @@
     }
     window.onload = function(){
       getjQuery('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', function(){
-        let jsFiles = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'js/shop.js'];
+        let jsFiles = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js','https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js' ,'js/shop.js'];
         jsFiles.map(source => {
           let scriptTag = document.createElement('script');
           scriptTag.type = "text/javascript"
