@@ -7,7 +7,7 @@ $(document).ready(function(){
       $('.dropdown').click(function(){
         $('.payment-options').unbind().click(function(){
           let file = val + '-' + $(this).attr('data-payment');
-          hideEmail();
+          //hideEmail();
           showDownloadDiv();
           $('#machine-pdf').attr('href', '/pdf?filename=' +  file)
         });
