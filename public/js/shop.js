@@ -4,8 +4,7 @@ $(function(){
     $(this).unbind().click(function(){
       let val = $(this).val();
       let name = $(this).attr('name');
-      console.log(name)
-      changeModalTitle();
+      changeModalTitle(name);
       $('.dropdown').click(function(){
         $('.payment-options').unbind().click(function(){
           let file = val + '-' + $(this).attr('data-payment');
@@ -19,8 +18,10 @@ $(function(){
   });
 });
 
-function changeModalTitle() {
-  let title = 'Please choose your payment options for '  + name;
+function changeModalTitle(machine) {
+  let title = 'Please choose your payment options for '  + machine;
+  console.log(machine)
+  console.log(title);
   $('.modal-title').text(title);
 }
 
