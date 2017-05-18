@@ -1,5 +1,6 @@
+let timeouts = [];
 $(document).ready(function(){
-  //$('#finance-modal').modal('show');
+  //$('#email-modal').modal('show');
   $('.button-3d').each(function(){
     $(this).unbind().click(function(){
       let val = $(this).val();
@@ -7,9 +8,7 @@ $(document).ready(function(){
       changeModalTitle(name);
       $('.dropdown').click(function(){
         $('.payment-options').unbind().click(function(){
-          console.log('clicked')
           let file = val + '-' + $(this).attr('data-payment');
-          hideEmail();
           showDownloadDiv();
           $('#machine-pdf').attr('href', '/pdf?filename=' +  file)
         });
@@ -17,12 +16,14 @@ $(document).ready(function(){
     });
   });
   $('#finance-modal').on('hidden.bs.modal', function(){
-    showEmail();
     hideDownloadDiv();
   });
   $('#finance-modal-email').click(function (){
     $('#email-modal').modal('show');
     return false;
+  });
+  $('#email-modal').on('hidden.bs.modal', function() {
+    $('#contact_form').data('bootstrapValidator').resetForm();
   });
 });
 
@@ -40,13 +41,6 @@ function changeModalTitle(machine) {
   $('.modal-title').text(title);
 }
 
-function showEmail(){
-  $('#modal-contact').show();
-}
-
-function hideEmail() {
-  $('#modal-contact').hide();
-}
 
 function showDownloadDiv() {
   $('#download-div').slideDown('slow');
@@ -54,6 +48,53 @@ function showDownloadDiv() {
 
 function hideDownloadDiv() {
   $('#download-div').hide();
+}
+
+function clearTimeouts() {
+  timeouts.map(item => {
+    clearTimeout(item);
+    timeouts.shift();
+  });
+}
+
+function successEmail() {
+  $('#send-email').text('Sent');
+  $('#send-email').attr('class', 'btn btn-success btn-lg');
+  $('#send-email').append($('<span class="glyphicon glyphicon-ok" id="send-email-span" style="margin-left:5px;"></span>'));
+  $('#contact_form')[0].reset();
+  $('#success_message').slideDown({ opacity: "show" }, "slow");
+  timeouts.push(setTimeout(function() {
+    $('#contact_form :input').prop('disabled', false);
+    $('#success_message').slideUp({ opacity: "hide" }, "slow");
+    $('#success_message').hide();
+    $('#send-email').text('Send');
+    $('#send-email').attr('class', 'btn btn-default btn-lg');
+    $('#send-email').append($('<i class="fa fa-space-shuttle" style="margin-left:5px;"></i>'));
+    clearTimeouts();
+    }, 4000)
+  );
+}
+
+function errorEmail() {
+  $('#send-email').text('Error');
+  $('#send-email').attr('class', 'btn btn-danger btn-lg');
+  $('#send-email').append($('<i class="fa fa-exclamation-triangle" style="margin-left:5px;"></i>'));
+  $('#error_message').slideDown({opacity:'show'}, 'slow');
+  timeouts.push(setTimeout(function() {
+    $('#contact_form :input').prop('disabled', false);
+    $('#error_message').slideUp({opacity:'hide'}, 'slow');
+    $('#send-email').text('Send again');
+    $('#send-email').attr('class', 'btn btn-default btn-lg');
+    $('#send-email').append($('<i class="fa fa-space-shuttle" style="margin-left:5px"></i>'));
+    clearTimeouts()
+    }, 4000)
+  );
+}
+
+function loadingEmail() {
+  $('#send-email').text('Sending');
+  $('#send-email').append($('<i class="fa fa-space-shuttle faa-passing animated" style="margin-left:5px"></i>'));
+  $('#contact_form :input').prop('disabled', true);
 }
 
 function emailValidator() {
@@ -105,14 +146,10 @@ function emailValidator() {
             }
         })
         .on('success.form.bv', function(e) {
-            //$('#success_message').slideDown({ opacity: "show" }, "slow"); //Show success message ...
-            //$('#error_message').slideDown({opacity:'show'}, 'slow') // show error message
-            // load spinner
-
-            //$('#contact_form').data('bootstrapValidator').resetForm(); // reset the form fields???
-
             // Prevent form submission
             e.preventDefault();
+            // reset validator checks
+            $('#contact_form').data('bootstrapValidator').resetForm();
             // Get the form instance
             let $form = $(e.target);
             let formData = $(e.target).serialize()
@@ -124,14 +161,15 @@ function emailValidator() {
               type:'POST',
               data: formData,
               dataType:'json',
+              beforeSend: function() {
+                loadingEmail();
+              },
               success: function(response) {
                 if (response.error) {
-                  // show error message
-                  $('#error_message').slideDown({opacity:'show'}, 'slow');
+                  console.log(response.error);
+                  errorEmail();
                 } else {
-                  // show ok message
-                  $('#success_message').slideDown({ opacity: "show" }, "slow")
-                  console.log('yay it went through!');
+                  successEmail();
                 }
               }
             });
