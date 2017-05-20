@@ -164,14 +164,8 @@ function emailValidator() {
               beforeSend: function() {
                 loadingEmail();
               },
-              success: function(response) {
-                if (response.error) {
-                  console.log(response.error);
-                  errorEmail();
-                } else {
-                  successEmail();
-                }
-              }
+              error: errorEmail(),
+              success: successEmail(),
             });
         });
 }
