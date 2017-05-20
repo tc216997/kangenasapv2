@@ -42,10 +42,19 @@ h6 {
     background-size: cover;
 }
 
+#science-header{
+    background:url('../img/science-header2.jpeg') no-repeat center center;
+}
+
 .intro-message {
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
+}
+
+#science-message {
+    padding-top:5%;
+    padding-bottom:5%;
 }
 
 .intro-message > h1 {
@@ -98,6 +107,10 @@ h6 {
 .content-section-a {
     padding: 50px 0;
     background-color: #f8f8f8;
+}
+
+#science-top-container {
+  padding:10px;
 }
 
 .content-section-b {
@@ -228,13 +241,13 @@ p.copyright {
     margin: 15px 0 0;
 }
 
-
 .text-dark {
   color: #000!important;
 }
 
-.v-align-middle {
-  vertical-align: middle;
+.flex-center {
+  display: flex;
+  align-items: center;
 }
 
 .v-center {
@@ -257,6 +270,7 @@ p.copyright {
 .black {
   color:#000!important;
 }
+
 .bootstrap-primary-blue {
   color:#5bc0de;
 }
@@ -275,6 +289,11 @@ p.copyright {
 .background-white {
   background-color:white!important;
 }
+
+.background-dark {
+  background-color:black!important;
+}
+
 .margin-top-15 {
   margin-top:15px!important;
 }
@@ -283,6 +302,13 @@ p.copyright {
   margin-bottom:15px!important;
 }
 
+.margin-top-40 {
+  margin-top: 40px!important;
+}
+
+.padding-0 {
+  padding:0;
+}
 .button-3d {
     -webkit-border-radius: 10px;
     -webkit-box-shadow:
@@ -458,3 +484,83 @@ p.copyright {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
 }
+
+/* youtube lazy load*/
+
+.youtube,
+.ytplayer-div {
+    background-color: #f8f8f8;
+}
+
+.youtube {
+    padding-top: 56.25%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.youtube img {
+    top: 0;
+    width:100%;
+    height:100%;
+}
+
+.gradient-border {
+  border: 3px solid transparent;
+  -webkit-border-image: -webkit-linear-gradient(left top, rgb(28,146,210), rgb(242, 252, 254));
+  -moz-border-image: -moz-linear-gradient(bottom right, rgb(28,146,210), rgb(242, 252, 254));
+  border-image: linear-gradient(to bottom right, rgb(229, 45, 39), rgb(379, 18, 23));
+  border-image-slice: 1;
+}
+
+.youtube .play-button {
+    width: 72px;
+    height: 48px;
+    background-color: #333;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+    z-index: 1;
+    opacity: .8;
+    border-radius: 6px;
+}
+
+.youtube .play-button:before {
+    content: "";
+    border-style: solid;
+    border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.youtube .play-button,
+.youtube img {
+    cursor: pointer;
+}
+
+.youtube .play-button,
+.youtube .play-button:before,
+.youtube iframe,
+.youtube img {
+    position: absolute;
+
+}
+
+.youtube .play-button,
+.youtube .play-button:before {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+.iframe-spinner {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    color:white;
+}
+.youtube iframe {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* end of youtube lazy load */
+
