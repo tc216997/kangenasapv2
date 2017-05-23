@@ -109,9 +109,7 @@ h6 {
     background-color: #f8f8f8;
 }
 
-#science-top-container {
-  padding:10px;
-}
+
 
 .content-section-b {
     padding: 50px 0;
@@ -180,6 +178,9 @@ h6 {
 
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
+    }
+    .carousel {
+      display:none;
     }
 }
 @media(max-width:1199px) and (min-width:767px) {
@@ -294,6 +295,10 @@ p.copyright {
   background-color:black!important;
 }
 
+.white {
+  color:white!important;
+}
+
 .margin-top-15 {
   margin-top:15px!important;
 }
@@ -307,7 +312,14 @@ p.copyright {
 }
 
 .padding-0 {
-  padding:0;
+  padding:0 !important;
+}
+
+.padding-top-15 {
+  padding-top:17px!important;
+}
+.padding-top-100 {
+  padding-top:100px!important;
 }
 .button-3d {
     -webkit-border-radius: 10px;
@@ -504,14 +516,6 @@ p.copyright {
     height:100%;
 }
 
-.gradient-border {
-  border: 3px solid transparent;
-  -webkit-border-image: -webkit-linear-gradient(left top, rgb(28,146,210), rgb(242, 252, 254));
-  -moz-border-image: -moz-linear-gradient(bottom right, rgb(28,146,210), rgb(242, 252, 254));
-  border-image: linear-gradient(to bottom right, rgb(229, 45, 39), rgb(379, 18, 23));
-  border-image-slice: 1;
-}
-
 .youtube .play-button {
     width: 72px;
     height: 48px;
@@ -564,3 +568,93 @@ p.copyright {
 
 /* end of youtube lazy load */
 
+.current {
+  background-color: blue;
+  color:white;
+}
+
+.white-border {
+  border: 1px solid black;
+}
+
+.videos-top-container {
+  padding-top:50px;
+  padding-left:0px;
+  padding-right:0px;
+  width:100%;
+  background-color:black;
+}
+#science-video-div {
+  background: black url("../img/science.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+.main-images-prop{
+  height:825px;
+  opacity:.6;
+}
+
+#testimonial-video-div {
+  background-image: url("../img/testimonial.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+#demo-video-div {
+  background-image: url("../img/demo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+}
+.watch-now-button {
+  display: inline-block;
+  padding: 1.2em 1.4em;
+  margin-top:.8em;
+  font-weight:700;
+  color:white;
+  text-transform: uppercase;
+  box-shadow:0 3px 6px rgba(0,0,0, .1);
+  text-decoration: none;
+  border:1px solid white;
+}
+
+.watch-now-button:hover {
+  background-color:green;
+  color:white;
+  text-decoration:none;
+}
+
+.science-message {
+  position:relative;
+  padding-top:15%;
+  padding-bottom:15%;
+}
+
+.videos-headers {
+  position:absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate3d(0, -50%, 0);
+}
+.videos-h1 {
+  margin: 0 auto 5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+  width:100%;
+  font-size:55px;
+}
+
+.videos-p {
+  font-size:20px;
+}
+
+.padding-left-right-0 {
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+.margin-left-right-0{
+  margin-left:0!important;
+  margin-right:0!important;
+}

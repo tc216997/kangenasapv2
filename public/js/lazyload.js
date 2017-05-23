@@ -1,6 +1,6 @@
 let youtube = document.querySelectorAll('.youtube');
 for (let i = 0; i < youtube.length; i++) {
-  createImage(youtube[i].dataset.embed, youtube[i]);
+  //createImage(youtube[i].dataset.embed, youtube[i]);
   youtube[i].addEventListener('click', function() {
     let mainPlayer = document.getElementById('main-ytplayer');
     let iframe = document.createElement('iframe');
@@ -21,12 +21,9 @@ for (let i = 0; i < youtube.length; i++) {
   });    
 }
 
-//let mainPlayer = document.getElementById('main-ytplayer'
-
 function createImage(embed,div) {
   let source = 'https://img.youtube.com/vi/' + embed + '/hqdefault.jpg';
   let image = new Image();
   image.src = source;
-  image.className = 'gradient-border';
   div.appendChild(image);
 }
