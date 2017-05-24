@@ -48,9 +48,9 @@ $(document).ready(function(){
 });
 
 function cycleDiv(item1, item2, item3, stop) {
-  $(item1).fadeIn(1500).delay(5000).fadeOut(1500, function(){
-    $(item2).fadeIn(1500).delay(5000).fadeOut(1500, function(){
-      $(item3).fadeIn(1500).delay(5000).fadeOut(1500, function(){
+  $(item1).fadeIn(1500).delay(4000).fadeOut(1500, function(){
+    $(item2).fadeIn(1500).delay(4000).fadeOut(1500, function(){
+      $(item3).fadeIn(1500).delay(4000).fadeOut(1500, function(){
         cycleDiv(item1, item2, item3);
       });
     });
@@ -106,7 +106,7 @@ function createCarouselImage(embed, first) {
     outerDiv.addClass('active');
   }
   let innerDiv = $('<div class="col-md-3 col-lg-3 col-sm-3"></div>')
-  let btn = $('<a href="#"></a>');
+  let btn = $('<a href="javaScript:void(0);"></a>');
   let image = $('<img class="img-responsive">');
   let source = 'https://img.youtube.com/vi/' + embed + '/hqdefault.jpg';
   image.attr('src', source);
