@@ -95,6 +95,7 @@ h6 {
     .intro-divider {
         width: 100%;
     }
+
 }
 
 .network-name {
@@ -179,9 +180,6 @@ h6 {
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
     }
-    .carousel {
-      display:none;
-    }
 }
 @media(max-width:1199px) and (min-width:767px) {
   .col-width-50 {
@@ -195,6 +193,12 @@ h6 {
 @media (min-width:992px) {
   .modal {
     top:10%!important;
+  }
+  #mobile-vids {
+    display:none;
+  }
+  #image-loader{
+    display:none;
   }
 }
 
@@ -210,11 +214,7 @@ h6 {
   }
 }
 
-@media(min-width:767px) {
-  .mobile-flex-center {
-    display:flex;
-    align-items:center;
-  }
+@media(min-width:768px) {
   .modal > h2 {
     word-wrap: break-word;
   }
@@ -224,6 +224,27 @@ h6 {
   .modal{
     top:5%!important;
   }
+  .carousel {
+    display:none;
+  }
+  #mobile-vids{
+    display:block;
+  }
+  #video-modal-h1 {
+    text-align:center;
+  }
+
+  #image-loader {
+    display:inline-block;
+  }
+  .video-modal-footer {
+    text-align:center;
+  }
+  .videos-headers {
+    text-align:center;
+    left:50%!important;
+    transform: translate3d(-50%, -50%, 0)!important;
+  }  
 }
 
 @media(max-width:480px) {
@@ -573,7 +594,7 @@ p.copyright {
   color:white;
 }
 
-.white-border {
+.black-border {
   border: 1px solid black;
 }
 
@@ -625,7 +646,7 @@ p.copyright {
   text-decoration:none;
 }
 
-.science-message {
+.feature-message {
   position:relative;
   padding-top:15%;
   padding-bottom:15%;
@@ -658,3 +679,141 @@ p.copyright {
   margin-left:0!important;
   margin-right:0!important;
 }
+
+/* The Modal (background) */
+.video-modal {
+    display: none; /* Hidden by default */
+    position: absolute;
+    z-index: 1; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+ /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.video-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height:90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.video-modal-body {
+  padding: 0 16px;
+}
+
+.video-modal-footer {
+    padding: 2px 16px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+#main-video-player {
+  background-color:black;
+  height:500px;
+}
+.white-border {
+  border: 1px solid white;
+}
+
+.iframe-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+ 
+/* 16x9 Aspect Ratio */
+.iframe-container-16x9 {
+  padding-bottom: 56.25%;
+}
+ 
+/* 4x3 Aspect Ratio */
+.iframe-container-4x3 {
+  padding-bottom: 75%;
+}
+ 
+.iframe-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.padding-top-70 {
+  margin-top: 70px!important
+}
+
+.carousel {
+  background-color: white;
+}
+
+.carousel-control {
+  width:5%;
+}
+/* override position and transform in 3.3.x */
+
+.carousel-inner .item.left.active {
+  transform: translateX(-25%);
+}
+.carousel-inner .item.right.active {
+  transform: translateX(25%);
+}
+
+.carousel-inner .item.next {
+  transform: translateX(25%)
+}
+.carousel-inner .item.prev {
+  transform: translateX(-25%)
+}
+
+.carousel-inner .item.right,
+.carousel-inner .item.left { 
+  transform: translateX(0);
+}
+
+.mobile-vids-grid {
+  padding:0;
+  border: 10px white solid;
+}
+
+

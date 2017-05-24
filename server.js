@@ -28,17 +28,14 @@ server.get(/^\/(index)?$/, (req, res) => {
   res.sendFile(getFile('index'));
 });
 
-server.get('/science/', (req, res) => {
-  res.sendFile(getFile('science'));
+server.get('/videos/', (req, res) => {
+  res.sendFile(getFile('videos'));
 });
 
-server.get('/testimonials/', (req, res) => {
-  res.sendFile(getFile('testimonials'));
+server.get('/studies/', (req, res) => {
+  res.sendFile(getFile('studies'));
 });
 
-server.get('/demo/', (req, res) => {
-  res.sendFile(getFile('demo'));
-});
 
 server.get('/shop/', (req, res) => {
   res.sendFile(getFile('shop'));
