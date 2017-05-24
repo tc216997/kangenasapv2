@@ -48,9 +48,9 @@ $(document).ready(function(){
 });
 
 function cycleDiv(item1, item2, item3, stop) {
-  $(item1).fadeIn(1500).delay(4000).fadeOut(1500, function(){
-    $(item2).fadeIn(1500).delay(4000).fadeOut(1500, function(){
-      $(item3).fadeIn(1500).delay(4000).fadeOut(1500, function(){
+  $(item1).fadeIn(1500).delay(2000).fadeOut(1500, function(){
+    $(item2).fadeIn(1500).delay(2000).fadeOut(1500, function(){
+      $(item3).fadeIn(1500).delay(2000).fadeOut(1500, function(){
         cycleDiv(item1, item2, item3);
       });
     });
