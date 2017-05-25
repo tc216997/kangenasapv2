@@ -63,7 +63,7 @@
               <div class="videos-headers">
                 <h1 class="videos-h1 white">Science:</h1>
                 <p class="videos-p white">Where little things mean a lot.</p>
-                <a href="javaScript:void(0);" class="watch-now-button" data-embed="kiPo8G-Dsb0" >Watch Now</a>
+                <a href="javaScript:void(0);" class="watch-now-button" data-embed="kiPo8G-Dsb0" data-position="0">Watch Now</a>
               </div>
            </div>
             <div class="col-lg-12 padding-left-right-0 display-none main-images">
@@ -72,7 +72,7 @@
               <div class="videos-headers">
                 <h1 class="videos-h1 white">Testimonials</h1>
                 <p class="videos-p white">Real people. Real results.</p>
-                <a href="javaScript:void(0);" class="watch-now-button" data-embed="6-zywkEqbtM">Watch Now</a>
+                <a href="javaScript:void(0);" class="watch-now-button" data-embed="6-zywkEqbtM" data-position="1">Watch Now</a>
               </div>              
            </div>
             <div class="col-lg-12 padding-left-right-0 display-none main-images">
@@ -81,92 +81,250 @@
               <div class="videos-headers">
                 <h1 class="videos-h1 white">Demonstrations</h1>
                 <p class="videos-p white">Water pH &amp; ORP demonstrations</p>
-                <a href="javaScript:void(0);" class="watch-now-button" data-embed="lh76nCh3kfs">Watch Now</a>
+                <a href="javaScript:void(0);" class="watch-now-button" data-embed="lh76nCh3kfs" data-position="2">Watch Now</a>
               </div>              
            </div>                      
         </div>
     <!-- /.container -->
 
-<!--
-  
-                  <div class="background-dark ytplayer-div youtube" data-embed="lT-jChFTVK0" id="science-ytplayer-div-1">
-                    <div class="play-button"></div>
-                  </div>
 
-
-feature videos are 
-                https://img.youtube.com/vi/kiPo8G-Dsb0/hqdefault.jpg science wathcnow
-                https://img.youtube.com/vi/6-zywkEqbtM /hqdefault.jpg testimonial watch now
-                https://img.youtube.com/vi/lh76nCh3kfs/hqdefault.jpg demo watch now
--->
-    <div class="video-modal " id="videoModal"><!-- whote modal -->
+    <div class="video-modal" id="videoModal"><!-- whote modal -->
       <div class="video-modal-content"><!-- modal content -->
         <div class="video-modal-body"><!-- modal body-->
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 background-dark">
               <div class="col-lg-2 col-md-2 col-sm-2 padding-left-right-0">&nbsp;</div>
               <div class="col-lg-8 col-md-8 col-sm-8">
-                <div class="iframe-container iframe-container-16x9">
-                  
+                <div class="iframe-container iframe-container-16x9" id="iframe-container">
+                  <iframe id="main-player-iframe" frameborder="0" allowfullscreen></iframe>
                 </div>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-2 padding-left-right-0">&nbsp;</div>
             </div>
           </div>
           <div class="row background-white">
-            <h1 id="video-modal-h1" style="margin-top:15px; padding-left:15px;">Don't forget to watch these videos also!</h1>
+            <h1 id="video-modal-h1" style="margin-top:15px;">Don't forget to watch these videos also!</h1>
           </div>
           <div class="row" id="carousel-row"> <!-- second row-->
           <div class="col-lg-12 col-md-12 col-sm-12 background-white padding-left-right-0">
+            <!--
             <div id="video-carousel" class="carousel slide" data-interval="false">
-              <!-- Wrapper for slides -->
+  
               <div class="carousel-inner">
               </div>
 
-              <!-- Controls -->
+  
               <a class="left carousel-control" href="#video-carousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
               </a>
               <a class="right carousel-control" href="#video-carousel" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
-            </div> <!-- Carousel -->            
+            </div>
+-->        
+            <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div> 
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div> 
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div> 
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                            <div class="col-sm-3 carousel-inner-div">
+                              <a class="carousel-a">
+                                <img src="http://placehold.it/500x500/000" class="img-responsive">
+                              </a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->                                        
+                </div>
+                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+            </div>
+            <!--/myCarousel-->    
           </div> <!--./col-lg-12-->
           </div> <!--./ second row-->
           <div class="row background-white" id="mobile-vids">
             <div class="col-sm-6 col-xs-6 mobile-vids-grid">
               <div class="background-dark ytplayer-div youtube" id="mobile-grid-1">
                 <img class="grid-images" id="grid-image-1">
-                <div class="play-button"></div>
+                
               </div>
             </div>
             <div class="col-sm-6 col-xs-6 mobile-vids-grid">
               <div class="background-dark ytplayer-div youtube" id="mobile-grid-2">
                 <img class="grid-images" id="grid-image-2">
-                <div class="play-button"></div>
+                
               </div>
             </div>
             <div class="col-sm-6 col-xs-6 mobile-vids-grid">
               <div class="background-dark ytplayer-div youtube" id="mobile-grid-3">
                 <img class="grid-images" id="grid-image-3">
-                <div class="play-button"></div>
+                
               </div>
             </div>
             <div class="col-sm-6 col-xs-6 mobile-vids-grid">
               <div class="background-dark ytplayer-div youtube" id="mobile-grid-4">
                 <img class="grid-images" id="grid-image-4">
-                <div class="play-button"></div>
+                
               </div>
             </div>                        
           </div>
           <div class="text-center">
             <button class="button-3d" id="image-loader">
-              <span><i class="glyphicon glyphicon-arrow-right" style="font-size:40px;"></i></span>
+              <span style="padding:1px 60px 1px 60px;"><i class="glyphicon glyphicon-arrow-right" style="font-size:40px;"></i></span>
               </button>
           </div>
         </div> <!--./modal body-->
         <div class="video-modal-footer">
-          <h2>Talk to real people with real testimonies. Check out testimonies on a daily basis <a href="https://www.facebook.com/groups/640441996152970/" target="_blank">HERE</a></h2>
+          <h2 class="video-footer-h2">Talk to real people with real testimonies. Check out testimonies on a daily basis <a href="https://www.facebook.com/groups/640441996152970/" target="_blank">HERE</a></h2>
+          <span class="close modal-close">&times;</span>
         </div> <!-- ./modal footer-->
       </div> <!--./modal content-->
     </div> <!--./whole modal->
