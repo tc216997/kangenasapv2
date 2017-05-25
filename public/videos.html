@@ -106,22 +106,7 @@
             <h1 id="video-modal-h1" style="margin-top:15px;">Don't forget to watch these videos also!</h1>
           </div>
           <div class="row" id="carousel-row"> <!-- second row-->
-          <div class="col-lg-12 col-md-12 col-sm-12 background-white padding-left-right-0">
-            <!--
-            <div id="video-carousel" class="carousel slide" data-interval="false">
-  
-              <div class="carousel-inner">
-              </div>
-
-  
-              <a class="left carousel-control" href="#video-carousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-              </a>
-              <a class="right carousel-control" href="#video-carousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </a>
-            </div>
--->        
+          <div class="col-lg-12 col-md-12 col-sm-12 background-white padding-left-right-0">  
             <div id="myCarousel" class="carousel slide">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
@@ -372,7 +357,7 @@
     }
     window.onload = function(){
       getjQuery('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', function(){
-        let jsFiles = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'js/lazyload.js', 'js/videos.js'];
+        let jsFiles = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'js/videos.js'];
         jsFiles.map(source => {
           let scriptTag = document.createElement('script');
           scriptTag.type = "text/javascript"
