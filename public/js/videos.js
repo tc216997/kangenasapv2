@@ -66,40 +66,6 @@ $(document).ready(function(){
   });
 });
 
-
-function mainImageLoader() {
-  let winWidth = $(window).width();
-  if(winWidth < 992) {
-    loadMobileGrid(ytVids, features, 'firstLoad');
-  } else {
-    loadCarouselImage(ytVids, features);
-  }
-}
-
-function cycleDiv(item1, item2, item3) {
-  $(item1).fadeIn(1500).delay(2000).fadeOut(1500, function(){
-    $(item2).fadeIn(1500).delay(2000).fadeOut(1500, function(){
-      $(item3).fadeIn(1500).delay(2000).fadeOut(1500, function(){
-        cycleDiv(item1, item2, item3);
-      });
-    });
-  });    
-}
-
-function loadCarouselImage(vids, mainVids) {
-
-  let nowPlaying = $('.iframe-container').attr('data-video');
-  let newVids = removeStringFromArray(nowPlaying, mainVids).concat(vids);
-  let carouselA = $('.carousel-a');
-  for(let i = 0; i < carouselA.length; i++) {
-    let source = 'https://img.youtube.com/vi/' + newVids[i] + '/hqdefault.jpg';
-    carouselA[i].dataset.embed = newVids[i];
-    carouselA[i].setAttribute('href', '#');
-    carouselA[i].setAttribute('onclick', 'swapIframe("' + newVids[i] + '", this)');
-    carouselA[i].childNodes[1].src = source;
-  }
-}
-
 function loadIframe(embed) {
   let source = 'https://www.youtube.com/embed/' + embed;
   $('iframe').attr('src', source);
@@ -112,6 +78,38 @@ function swapIframe(newEmbed, el) {
   $('iframe').attr('src', source);
   $('.iframe-container').attr('data-video', newEmbed);
   el.childNodes[1].src = 'https://img.youtube.com/vi/' + currentVid + '/hqdefault.jpg'
+}
+
+function cycleDiv(item1, item2, item3) {
+  $(item1).fadeIn(1500).delay(2000).fadeOut(1500, function(){
+    $(item2).fadeIn(1500).delay(2000).fadeOut(1500, function(){
+      $(item3).fadeIn(1500).delay(2000).fadeOut(1500, function(){
+        cycleDiv(item1, item2, item3);
+      });
+    });
+  });    
+}
+
+function mainImageLoader() {
+  let winWidth = $(window).width();
+  if(winWidth < 992) {
+    loadMobileGrid(ytVids, features, 'firstLoad');
+  } else {
+    loadCarouselImage(ytVids, features);
+  }
+}
+
+function loadCarouselImage(vids, mainVids) {
+  let nowPlaying = $('.iframe-container').attr('data-video');
+  let newVids = removeStringFromArray(nowPlaying, mainVids).concat(vids);
+  let carouselA = $('.carousel-a');
+  for(let i = 0; i < carouselA.length; i++) {
+    let source = 'https://img.youtube.com/vi/' + newVids[i] + '/hqdefault.jpg';
+    carouselA[i].dataset.embed = newVids[i];
+    carouselA[i].setAttribute('href', '#');
+    carouselA[i].setAttribute('onclick', 'swapIframe("' + newVids[i] + '", this)');
+    carouselA[i].childNodes[1].src = source;
+  }
 }
 
 function loadMobileGrid(vids, mainVids, initialLoad) {

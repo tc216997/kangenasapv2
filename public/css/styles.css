@@ -347,7 +347,7 @@ p.copyright {
 }
 
 .padding-top-15 {
-  padding-top:17px!important;
+  padding-top:15px!important;
 }
 .padding-top-100 {
   padding-top:100px!important;
@@ -878,4 +878,47 @@ p.copyright {
 .mobile-vids-grid {
   padding:0;
   border: 10px white solid;
+}
+
+.height-125 {
+  height:125px;
+}
+
+.studies-btn {
+  width:100%; 
+  height:100%; 
+  white-space:normal;
+}
+
+.author-body {
+  padding-left:2em;
+}
+
+.author-btn {
+  padding-left:5px;
+}
+
+.abstract-header {
+  color:purple;
+}
+
+.abstract-header {
+  font-size: 18px;
+}
+.abstract-body {
+  padding-left: 2em;
+  font-size:18px;
+}
+
+.reference-link {
+  padding-left:2em;
+  font-size: 16px;
+}
+
+.border-none {
+  border: none!important;
+}
+
+.panel-group .panel+.panel {
+  margin-top: 0!important;
 }
