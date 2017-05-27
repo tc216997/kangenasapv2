@@ -15,6 +15,12 @@ h6 {
     font-weight: 700;
 }
 
+.absolute-center {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
 .topnav {
     font-size: 14px;
 }
@@ -52,6 +58,42 @@ h6 {
     padding-bottom: 20%;
 }
 
+.close-button {
+  overflow: hidden;
+}
+#index-yt-modalDialog {
+  width:98%;
+}
+.index-yt-modalContent {
+  box-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+  
+.index-yt-modalContent .close {
+  font-size: 30px;
+  line-height: 30px;
+  padding: 7px 4px 7px 13px;
+  text-shadow: none;
+  opacity: .7;
+  color:#fff;
+}
+
+.index-yt-modalContent .close span {
+  display: block;
+}
+
+.index-yt-modalContent .close:hover,
+.index-yt-modalContent .close:focus {
+  opacity: 1;
+  outline: none;
+}
+
+.index-yt-modalContent iframe {
+  display: block;
+  margin: 0 auto;
+}
+
 #science-message {
     padding-top:5%;
     padding-bottom:5%;
@@ -61,6 +103,10 @@ h6 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 5em;
+}
+
+.intro-message > h2 {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
 .intro-divider {
@@ -708,6 +754,7 @@ p.copyright {
 
 }
 
+
 /* Add Animation */
 
 @keyframes slideIn {
@@ -797,6 +844,10 @@ p.copyright {
 
 .video-footer-h2 {
   animation: roadRunnerIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
+
+.unfoldIn {
+  animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 
 .unfoldOut {
@@ -922,3 +973,4 @@ p.copyright {
 .panel-group .panel+.panel {
   margin-top: 0!important;
 }
+
