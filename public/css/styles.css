@@ -29,7 +29,9 @@ h6 {
     font-size: 18px;
     font-weight: 400;
 }
-
+iframe {
+  border:none;
+}
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
@@ -514,6 +516,12 @@ p.copyright {
   margin:auto;
 }
 
+.email-modal-title {
+  font-size:32px; 
+  margin-top:38px; 
+  margin-bottom:20px;
+}
+
 #finance-modal-dialog {
   width:70%;
   max-width: 70%;
@@ -539,7 +547,9 @@ p.copyright {
 .font-30 {
   font-size:30px!important;
 }
-
+.font-40 {
+  font-size:40px!important;
+}
 .dropdown-menu {
   left: 50%;
   right: auto;
@@ -919,7 +929,15 @@ p.copyright {
 .padding-top-70 {
   margin-top: 70px!important
 }
-
+.padding-bottom-120{
+  padding-bottom: 120px!important
+}
+.resize-vertical {
+  resize: vertical;
+}
+.float-right {
+  float:right!important;
+}
 .carousel-control {
   padding-top:10%;
   width:3%;
