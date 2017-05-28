@@ -33,26 +33,23 @@ iframe {
   border:none;
 }
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px; 
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url("https://image.ibb.co/gEHNLk/stock_photo.jpg") no-repeat center center;
+    background: url("https://image.ibb.co/b2C2av/stock_photo.jpg") no-repeat center center;
     background-size: cover;
 }
 
 .shop-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url("https://image.ibb.co/nFP2Lk/shop_stock.jpg") no-repeat center center;
+    background: url("https://image.ibb.co/kGDm2a/shop_stock.jpg") no-repeat center center;
     background-size: cover;
 }
 
-#science-header{
-    background:url('../img/science-header2.jpeg') no-repeat center center;
-}
 
 .intro-message {
     position: relative;
@@ -178,14 +175,14 @@ iframe {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url("https://image.ibb.co/cVH6fk/banner_bg2.jpg") no-repeat center center;
+    background: url("https://image.ibb.co/fK44oF/banner_bg2.jpg") no-repeat center center;
     background-size: cover;
 }
 
 .shop-banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url("https://image.ibb.co/fChHmQ/shop_banner2.jpg") no-repeat center center;
+    background: url("https://image.ibb.co/gDAuoF/shop_banner2.jpg") no-repeat center center;
     background-size: cover;
 }
 
@@ -672,7 +669,7 @@ p.copyright {
   background-color:black;
 }
 #science-video-div {
-  background: black url("../img/science.jpg");
+  background: black url("https://image.ibb.co/k66H8F/science.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -682,13 +679,13 @@ p.copyright {
 }
 
 #testimonial-video-div {
-  background-image: url("../img/testimonial.jpg");
+  background-image: url("https://image.ibb.co/icGjoF/testimonial.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   
 }
 #demo-video-div {
-  background-image: url("../img/demo.jpg");
+  background-image: url("https://image.ibb.co/bHYKNa/demo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
  
