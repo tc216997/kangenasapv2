@@ -13,14 +13,17 @@ $(document).ready(function(){
     addIframe(this.dataset.embed)
     pModal.addClass('unfoldIn').modal('show');
   });
+
   textModalBtns.on('click', function(){
-    $(textModal).modal({backdrop: 'static', keyboard: false})
+    $(textModal).modal({backdrop: 'static', keyboard: false});
     textModal.addClass('unfoldIn').modal('show');
     if (this.dataset.embed === 'article1') {
       $('#modal-article1').removeClass('display-none');
-    } else if (this.dataset.embed = 'article2') {
+    } 
+    if (this.dataset.embed === 'article2') {
       $('#modal-article2').removeClass('display-none');
-    } else {
+    } 
+    if (this.dataset.embed === 'article3') {
       $('#modal-article3').removeClass('display-none');
     }
   });
@@ -41,10 +44,14 @@ $(document).ready(function(){
   
   textModal.on('hidden.bs.modal', function() {
     onModalHidden(textModal, $('#index-modal-text-close'));
-    if($('#modal-article1').attr('class') === 'display-none') {
-      $('#modal-article2').addClass('display-none');
-    } else {
+    if($('#modal-article1').attr('class') !== 'display-none') {
       $('#modal-article1').addClass('display-none');
+    } 
+    if ($('#modal-article2').attr('class') !== 'display-none') {
+      $('#modal-article2').addClass('display-none');
+    } 
+    if ($('#modal-article3').attr('class') !== 'display-none') {
+      $('#modal-article3').addClass('display-none');
     }
   });
 });
