@@ -25,9 +25,9 @@ let images = [],
     temp = [];
     youtube = document.querySelectorAll('.youtube');
     //preload images
-    (new Image()).src = '../img/science.jpg'; 
-    (new Image()).src = '../img/testimonial.jpg';
-    (new Image()).src = '../img/demo.jpg';
+    (new Image()).src = 'https://image.ibb.co/k66H8F/science.jpg'; 
+    (new Image()).src = 'https://image.ibb.co/icGjoF/testimonial.jpg';
+    (new Image()).src = 'https://image.ibb.co/bHYKNa/demo.jpg';
 
 // click handler for mobile vids
 for (let i = 0; i < youtube.length; i++) {
