@@ -218,7 +218,24 @@ iframe {
     float:none;
     padding-top:15px;
     margin-left:0;
-  }
+    }
+    .study-header {
+      font-size:20px!important;
+    }
+    .abstract-header {
+      font-size:14px!important;
+    }
+    .abstract-body {
+      font-size:14px!important;
+    }
+    .reference-header{
+      font-size:18px!important;
+    }
+    .reference-link {
+      display:block;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 }
 @media(max-width:1199px) and (min-width:767px) {
   .col-width-50 {
