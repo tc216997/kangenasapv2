@@ -37,6 +37,9 @@ $(document).ready(function(){
     onModalOpen(textModal, $('#index-modal-text-close'), document.getElementById('index-text-modal'));
   });
 
+  textModal.on('shown.bs.modal', function(){
+    $(textModal).animate({ scrollTop: 0 }, 'slow');
+  });
   // after the modal is hidden from sight
   pModal.on('hidden.bs.modal', function() {
     onModalHidden(pModal, $('#index-modal-yt-close'));
