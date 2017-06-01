@@ -22,14 +22,13 @@ let images = [],
               '8kdUU-9RwLk',
               '4XVrzoCgGVk'],
     features = ['kiPo8G-Dsb0','6-zywkEqbtM','lh76nCh3kfs'],
-    temp = [];
     youtube = document.querySelectorAll('.youtube');
-    //preload images
+    //preload the images so the images don't load on fade
     (new Image()).src = 'https://image.ibb.co/k66H8F/science.jpg'; 
     (new Image()).src = 'https://image.ibb.co/icGjoF/testimonial.jpg';
     (new Image()).src = 'https://image.ibb.co/bHYKNa/demo.jpg';
 
-// click handler for mobile vids
+// youtube video click handler
 for (let i = 0; i < youtube.length; i++) {
   youtube[i].addEventListener('click', function(e){
     e.preventDefault();
@@ -45,18 +44,22 @@ for (let i = 0; i < youtube.length; i++) {
 
 
 $(document).ready(function(){
+  // push the three main images item to array
   $('.main-images').each(function(i, item) {
     images.push(item);
   });
+  // fade in fade out each image recursively
   cycleDiv(images[0], images[1], images[2]);
+  // click handler and animation for modal opening
   $('.watch-now-button').each(function(i, item){
     $(item).click(function() {
+      stopped = true;
       $("#videoModal").off("webkitAnimationEnd oanimationend msAnimationEnd animationend").css("display", "block");
       loadIframe(this.dataset.embed);
       mainImageLoader();
     });
   });
-
+  // modal close handler
   $('.modal-close').click(function(){
     $('#videoModal').addClass('unfoldOut');
     $('#videoModal').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
@@ -64,15 +67,18 @@ $(document).ready(function(){
       $('#videoModal').css('display', 'none');
     });
   });
+
 });
 
 function loadIframe(embed) {
+  // change iframe source in the main container
   let source = 'https://www.youtube.com/embed/' + embed;
   $('iframe').attr('src', source);
   $('.iframe-container').attr('data-video', embed);
 }
 
 function swapIframe(newEmbed, el) {
+  // swap iframe container picture and embed with the new element
   let currentVid = document.getElementById('iframe-container').dataset.video;
   let source = 'https://www.youtube.com/embed/' + newEmbed;
   $('iframe').attr('src', source);
@@ -81,6 +87,7 @@ function swapIframe(newEmbed, el) {
 }
 
 function cycleDiv(item1, item2, item3) {
+  // takes in the divs, and fade them
   $(item1).fadeIn(1500).delay(2000).fadeOut(1500, function(){
     $(item2).fadeIn(1500).delay(2000).fadeOut(1500, function(){
       $(item3).fadeIn(1500).delay(2000).fadeOut(1500, function(){
@@ -91,6 +98,7 @@ function cycleDiv(item1, item2, item3) {
 }
 
 function mainImageLoader() {
+  // load mobile grid or carousel image
   let winWidth = $(window).width();
   if(winWidth < 992) {
     loadMobileGrid(ytVids, features, 'firstLoad');
@@ -100,6 +108,7 @@ function mainImageLoader() {
 }
 
 function loadCarouselImage(vids, mainVids) {
+  // load carousel image
   let nowPlaying = $('.iframe-container').attr('data-video');
   let newVids = removeStringFromArray(nowPlaying, mainVids).concat(vids);
   let carouselA = $('.carousel-a');
@@ -113,23 +122,25 @@ function loadCarouselImage(vids, mainVids) {
 }
 
 function loadMobileGrid(vids, mainVids, initialLoad) {
+  //  load grid for mobile display
   let n = 0;
   let nowPlaying = $('.iframe-container').attr('data-video');
   let newVids = removeStringFromArray(nowPlaying, mainVids).concat(vids);
   let gridImages = document.querySelectorAll('.grid-images');
-
+  // onclick handler for image
   $('#image-loader').on('click', function(){
     for(let i = 0; i < gridImages.length; i++) {
       gridImages[i].src = 'https://img.youtube.com/vi/' + newVids[n] + '/hqdefault.jpg';
       $(gridImages[i]).attr('data-embed', newVids[n])
       n++;
     }
-    // at the end of the vids;
+    // at the end of the vids
     if (n >= 24) {
       $('#image-loader').remove();
       $('.video-footer-h2').css('display', 'block');
     }
   });
+
   if (initialLoad) {
     for(let i = 0; i < gridImages.length; i++) {
       gridImages[i].src = 'https://img.youtube.com/vi/' + newVids[n] + '/hqdefault.jpg';
@@ -140,6 +151,7 @@ function loadMobileGrid(vids, mainVids, initialLoad) {
 }
 
 function removeStringFromArray(str, array) {
+  // remove item from array
   let index = array.indexOf(str);
   if (index > -1) {
       array.splice(index, 1);
@@ -147,6 +159,7 @@ function removeStringFromArray(str, array) {
   return array
 }
 
+// check if the item is first
 Array.prototype.isFirst = function(item) {
   return this[0] === item;
 }

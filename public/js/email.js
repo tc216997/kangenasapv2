@@ -1,6 +1,7 @@
 let timeouts = [];
+
 $(document).ready(function(){
-  //$('#email-modal').modal('show');
+  // click handler for dropdown payment options;  
   $('.button-3d').each(function(){
     $(this).unbind().click(function(){
       let val = $(this).val();
@@ -15,19 +16,26 @@ $(document).ready(function(){
       });
     });
   });
+
   $('#finance-modal').on('hidden.bs.modal', function(){
     hideDownloadDiv();
   });
+
   $('#finance-modal-email').click(function (){
     $('#email-modal').modal('show');
     return false;
   });
+
   $('#email-modal').on('hidden.bs.modal', function() {
     $('#contact_form').data('bootstrapValidator').resetForm();
   });
+  
 });
 
 $(document).ready(function(){
+  // there was a problem on my end with the download speed;
+  // emailValidator was being called before function exist
+  // this make sure the function exist because calling the emailValidator function
   let checkFunctionExist = setInterval(function() {
     if (typeof emailValidator === 'function') {
       emailValidator();
@@ -37,20 +45,24 @@ $(document).ready(function(){
 });
 
 function changeModalTitle(machine) {
+  // change the title text of the payment modal
   let title = 'Please choose your payment options for '  + machine;
   $('.modal-title').text(title);
 }
 
 
 function showDownloadDiv() {
+  // show download div containing the pdfs
   $('#download-div').slideDown('slow');
 }
 
 function hideDownloadDiv() {
+  // hide download div containing the pdfs
   $('#download-div').hide();
 }
 
 function clearTimeouts() {
+  // remove the first id in the timeout array until there are none
   timeouts.map(item => {
     clearTimeout(item);
     timeouts.shift();
@@ -58,6 +70,7 @@ function clearTimeouts() {
 }
 
 function successEmail() {
+  // success sending the email, server return 200 response code
   $('#send-email').text('Sent');
   $('#send-email').attr('class', 'btn btn-success btn-lg');
   $('#send-email').append($('<span class="glyphicon glyphicon-ok" id="send-email-span" style="margin-left:5px;"></span>'));
@@ -76,6 +89,7 @@ function successEmail() {
 }
 
 function errorEmail() {
+  // error sending the email, server sending a 4** or 5** response
   $('#send-email').text('Error');
   $('#send-email').attr('class', 'btn btn-danger btn-lg');
   $('#send-email').append($('<i class="fa fa-exclamation-triangle" style="margin-left:5px;"></i>'));
@@ -92,14 +106,15 @@ function errorEmail() {
 }
 
 function loadingEmail() {
+  // show a sending icon while ajax is being processed
   $('#send-email').text('Sending');
   $('#send-email').append($('<i class="fa fa-space-shuttle faa-passing animated" style="margin-left:5px"></i>'));
   $('#contact_form :input').prop('disabled', true);
 }
 
 function emailValidator() {
+  // email validator from boostarpValidator
   $('#contact_form').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',

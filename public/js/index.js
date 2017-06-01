@@ -1,22 +1,22 @@
 $(document).ready(function(){
-  // on problem button click
-  
-  let pModal = $('#index-yt-modal') 
-  let pModalBtns = $('.index-yt-modal-btns');
-  let textModal = $('#index-text-modal');
-  let textModalBtns = $('.index-text-modal-btns');
-  
-  //textModal.modal('show')
-
+  let pModal = $('#index-yt-modal'), 
+      pModalBtns = $('.index-yt-modal-btns'),
+      textModal = $('#index-text-modal'),
+      textModalBtns = $('.index-text-modal-btns');
+      
   pModalBtns.on('click', function(){
+    //prevent modal from closing by clicking the outside area or keyboard
     $(pModal).modal({backdrop: 'static', keyboard: false})
     addIframe(this.dataset.embed)
+    // unfoldIn is the modal animation class
     pModal.addClass('unfoldIn').modal('show');
   });
 
   textModalBtns.on('click', function(){
+    //prevent modal from closing by clicking the outside area or keyboard
     $(textModal).modal({backdrop: 'static', keyboard: false});
     textModal.addClass('unfoldIn').modal('show');
+
     if (this.dataset.embed === 'article1') {
       $('#modal-article1').removeClass('display-none');
     } 
@@ -38,6 +38,7 @@ $(document).ready(function(){
   });
 
   textModal.on('shown.bs.modal', function(){
+    // scroll the modal window to top of element
     $(textModal).animate({ scrollTop: 0 }, 'slow');
   });
   // after the modal is hidden from sight
@@ -61,6 +62,7 @@ $(document).ready(function(){
 
 
 function addIframe(embed) {
+  // add iframe with source to iframe-container
   $('#iframe-container').html('');
   let iframe = $('<iframe id="index-modal-iframe" src="#" allowfullscreen></iframe>')
   let source = 'https://www.youtube.com/embed/' + embed;
@@ -85,6 +87,8 @@ function onModalOpen(targetModal, modalCloseBtn, jsModalObject) {
       targetModal.removeClass('unfoldIn').addClass('unfoldOut');
     });
     targetModal.on('click', function(e) {
+      // close modal if clicked outside of modal
+      // overridding the modal backdrop static essentially
       if (e.target === jsModalObject) {
         $(targetModal).on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
         targetModal.modal('hide');
