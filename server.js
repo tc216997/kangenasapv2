@@ -10,10 +10,6 @@ server.set('port', process.env.PORT || 3000 );
 server.use(compression());
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(express.static(path.resolve(__dirname, 'public')));
-server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-});
 
 let transporter = nodemailer.createTransport({
     service: 'Gmail',
