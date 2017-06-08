@@ -29,13 +29,13 @@ $(document).ready(function(){
   $('#email-modal').on('hidden.bs.modal', function() {
     $('#contact_form').data('bootstrapValidator').resetForm();
   });
-  
+
 });
 
 $(document).ready(function(){
   // there was a problem on my end with the download speed;
   // emailValidator was being called before function exist
-  // this make sure the function exist because calling the emailValidator function
+  // this make sure the function exist before calling the emailValidator function
   let checkFunctionExist = setInterval(function() {
     if (typeof emailValidator === 'function') {
       emailValidator();
@@ -113,7 +113,7 @@ function loadingEmail() {
 }
 
 function emailValidator() {
-  // email validator from boostarpValidator
+  // email validator from boostrapValidator
   $('#contact_form').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -179,8 +179,8 @@ function emailValidator() {
               beforeSend: function() {
                 loadingEmail();
               },
-              error: errorEmail(),
-              success: successEmail(),
+              error: errorEmail,
+              success: successEmail
             });
         });
 }

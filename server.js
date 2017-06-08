@@ -36,7 +36,6 @@ server.get('/studies/', (req, res) => {
   res.sendFile(getFile('studies'));
 });
 
-
 server.get('/shop/', (req, res) => {
   res.sendFile(getFile('shop'));
 });
