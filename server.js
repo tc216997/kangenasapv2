@@ -14,13 +14,8 @@ server.use(express.static(path.resolve(__dirname, 'public')));
 let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        type: 'OAuth2',
         user: process.env.EMAILUSER,
-        clientId: process.env.CLIENTID,
-        clientSecret: process.env.CLIENTSECRET,
-        refreshToken: process.env.REFRESHTOKEN,
-        accessToken: process.env.ACCESSTOKEN,
-        expires: 3600
+        pass: process.env.EMAILPW
     }
 });
 
@@ -89,6 +84,7 @@ function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
     subject: sender + ' ' + emailSubject,
     html: '<strong>Customer name:</strong>  ' + sender + '<br><br><strong>Customer email:  </strong>' + senderAddress  + '<br><br><strong>Message:  </strong><br>' + emailMsg,
   }
+  
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       res.status(500).json({ status:'failed', error:err});
