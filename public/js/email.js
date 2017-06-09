@@ -39,7 +39,6 @@ $(document).ready(function(){
   let checkFunctionExist = setInterval(function() {
     if (typeof emailValidator === 'function') {
       emailValidator();
-      formTest()
       clearInterval(checkFunctionExist);
     }
   }, 100);
@@ -186,9 +185,11 @@ function emailValidator() {
         });
 }
 
+/* form autofill for test email
 function formTest(){
   $('#form-name').val('Terry Chong');
   $('#form-email').val('tchong916@gmail.com');
   $('#form-subject').val('Hi i am interested in macarons');
   $('#form-message').val('What is the price of 1 box of macarons?');
 }
+*/
