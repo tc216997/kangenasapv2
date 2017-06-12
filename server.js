@@ -2,14 +2,32 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const expressSanitizer = require('express-sanitizer');
 const bodyParser = require('body-parser');
 const request = require('request');
 const compression = require('compression');
+const RateLimit = require('express-rate-limit');
 const server = express();
+const emailLimiter = new RateLimit({
+  windowMs: 10*60*1000,
+  max: 10,
+  delay: 0,
+  handler: function(req, res) {
+    res.format({
+      json: function() {
+        res.status(429).json({status:'Email limit exceeded.<br> Please try again later.'});
+      }
+    });
+  }
+});
+
+server.enable('trust proxy');
 server.set('port', process.env.PORT || 3000 );
 server.use(compression());
 server.use(bodyParser.urlencoded({extended:true}));
+server.use(expressSanitizer());
 server.use(express.static(path.resolve(__dirname, 'public')));
+server.use('/send-email', emailLimiter);
 
 let transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -35,25 +53,17 @@ server.get('/shop/', (req, res) => {
   res.sendFile(getFile('shop'));
 });
 
-server.get('/contact/', (req, res) => {
-  res.sendFile(getFile('contact'));
-});
-
-server.get('/email-sent', (req, res) => {
-  res.status(200).sendFile(getFile('email-sent'));
-});
-
 server.get('/pdf', (req, res) => {
-  let filePath = path.resolve(__dirname, 'pdf')
-  let fileName = path.resolve(filePath, req.query.filename + '.pdf')
+  let filePath = path.resolve(__dirname, 'pdf');
+  let fileName = path.resolve(filePath, req.query.filename + '.pdf');
   res.download(fileName);
 })
 
 server.post('/send-email', (req, res) => {
-  let emailAddress = req.body.email;
-  let senderName = req.body.name;
-  let emailSubject = req.body.subject;
-  let emailMsg = req.body.message;
+  let emailAddress = req.sanitize(req.body.email);
+  let senderName = req.sanitize(req.body.name);
+  let emailSubject = req.sanitize(req.body.subject);
+  let emailMsg = req.sanitize(req.body.message);
   sendEmail(emailAddress, senderName, emailSubject, emailMsg, res);
 });
 
@@ -61,6 +71,7 @@ server.post('/send-email', (req, res) => {
 server.use((req, res) => {
   res.status(400).sendFile("404.html", {"root": path.resolve(__dirname, 'public')});
 });
+
 server.use((error, req, res, next) => {
   res.status(500).sendFile("500.html", {"root": path.resolve(__dirname, 'public')});;
 });
@@ -79,19 +90,18 @@ function getFile(pathname) {
 // send email using nodemailer
 function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
   let mailOptions = {
-    from: sender + ' ' + senderAddress,
-    to: process.env.EMAILUSER,
-    subject: sender + ' ' + emailSubject,
+    to: process.env.FORWARDEMAIL,
+    subject: emailSubject,
     html: '<strong>Customer name:</strong>  ' + sender + '<br><br><strong>Customer email:  </strong>' + senderAddress  + '<br><br><strong>Message:  </strong><br>' + emailMsg,
   }
   
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      res.status(500).json({ status:'failed', error:err});
+      res.status(500).json({ status:'Error! <br> Please try again', error:err});
       console.log(err);
     } else {
       console.log('email %s sent: %s', info.messageId, info.response);
-      res.status(200).json({ status:'success', error:null});
+      res.status(200).json({ status:'Email sent!', error:null});
     }
   });
 }

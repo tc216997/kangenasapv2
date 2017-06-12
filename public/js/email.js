@@ -69,47 +69,47 @@ function clearTimeouts() {
   });
 }
 
-function successEmail() {
-  // success sending the email, server return 200 response code
-  $('#send-email').text('Sent');
-  $('#send-email').attr('class', 'btn btn-success btn-lg');
-  $('#send-email').append($('<span class="glyphicon glyphicon-ok" id="send-email-span" style="margin-left:5px;"></span>'));
-  $('#contact_form')[0].reset();
-  $('#success_message').slideDown({ opacity: "show" }, "slow");
-  timeouts.push(setTimeout(function() {
-    $('#contact_form :input').prop('disabled', false);
-    $('#success_message').slideUp({ opacity: "hide" }, "slow");
-    $('#success_message').hide();
-    $('#send-email').text('Send');
-    $('#send-email').attr('class', 'btn btn-default btn-lg');
-    $('#send-email').append($('<i class="fa fa-space-shuttle" style="margin-left:5px;"></i>'));
-    clearTimeouts();
-    }, 4000)
-  );
+function showSendingMsg() {
+  $('#sending-icon').css('display', 'block');
+  $('#sending-message').css('display', 'block');  
 }
 
-function errorEmail() {
-  // error sending the email, server sending a 4** or 5** response
-  $('#send-email').text('Error');
-  $('#send-email').attr('class', 'btn btn-danger btn-lg');
-  $('#send-email').append($('<i class="fa fa-exclamation-triangle" style="margin-left:5px;"></i>'));
-  $('#error_message').slideDown({opacity:'show'}, 'slow');
-  timeouts.push(setTimeout(function() {
-    $('#contact_form :input').prop('disabled', false);
-    $('#error_message').slideUp({opacity:'hide'}, 'slow');
-    $('#send-email').text('Send again');
-    $('#send-email').attr('class', 'btn btn-default btn-lg');
-    $('#send-email').append($('<i class="fa fa-space-shuttle" style="margin-left:5px"></i>'));
-    clearTimeouts()
-    }, 4000)
-  );
+function hideSendingMsg() {
+  $('#sending-icon').css('display', 'none');
+  $('#sending-message').css('display', 'none');  
 }
 
-function loadingEmail() {
-  // show a sending icon while ajax is being processed
-  $('#send-email').text('Sending');
-  $('#send-email').append($('<i class="fa fa-space-shuttle faa-passing animated" style="margin-left:5px"></i>'));
-  $('#contact_form :input').prop('disabled', true);
+function successHandler() {
+  hideSendingMsg();
+  $('#success-icon').css('display', 'block');
+  $('#success-message').css('display', 'block');
+  let myTimeout = window.setTimeout(() => {
+    $('.ajax-modal').css('display', 'none');
+    $('#success-icon').css('display', 'none');
+    $('#success-message').css('display', 'none');
+    clearForm();
+    window.clearTimeout(myTimeout);
+    myTimeout = undefined;
+  }, 4000);
+}
+
+function errorHandler(response) {
+  hideSendingMsg();
+  let errorMsg = response.responseJSON.status;
+  $('#error-icon').css('display', 'block');
+  $('#error-message').css('display', 'block');
+  $('#error-message').html(errorMsg);
+  window.setTimeout(() => {
+    $('.ajax-modal').css('display', 'none');
+    $('#error-icon').css('display', 'none');
+    $('#error-message').css('display', 'none');
+    $('#error-message').html('');
+  }, 4000);
+}
+
+function hideErrorMsg() {
+  $('#error-icon').css('display', 'none');
+  $('#error-message').css('display', 'none');    
 }
 
 function emailValidator() {
@@ -131,9 +131,9 @@ function emailValidator() {
                     }
                 }
             },
-             subject: {
+            subject: {
                 validators: {
-                     stringLength: {
+                    stringLength: {
                         min: 2,
                     },
                     notEmpty: {
@@ -153,6 +153,9 @@ function emailValidator() {
             },
             message: {
                 validators: {
+                    stringLength: {
+                        min: 10,
+                    },                  
                       notEmpty: {
                           message: 'Please enter a message'
                       }
@@ -170,26 +173,34 @@ function emailValidator() {
             let formData = $(e.target).serialize()
             // Get the BootstrapValidator instance
             let bv = $form.data('bootstrapValidator');
+            // show sending message
+            $('.ajax-modal').css('display', 'block');
+            showSendingMsg();
             // Use Ajax to submit form data
             $.ajax({
               url: '/send-email',
               type:'POST',
               data: formData,
               dataType:'json',
-              beforeSend: function() {
-                loadingEmail();
+              error: function(res) {
+                errorHandler(res);
               },
-              error: errorEmail,
-              success: successEmail
+              success: successHandler
             });
         });
 }
 
-/* form autofill for test email
-function formTest(){
-  $('#form-name').val('Terry Chong');
+//form autofill for test email
+function autofillForm(){
+  $('#form-name').val('Terry Chong<script>console.log(\'hello\')</script>');
   $('#form-email').val('tchong916@gmail.com');
-  $('#form-subject').val('Hi i am interested in macarons');
-  $('#form-message').val('What is the price of 1 box of macarons?');
+  $('#form-subject').val('Hi i am interested in macarons <script>console.log(\'hello\')</script>');
+  $('#form-message').val('What is the price of 1 box of macarons? <script>console.log(\'hello\')</script>');
 }
-*/
+
+function clearForm() {
+  $('#form-name').val('');
+  $('#form-email').val('');
+  $('#form-subject').val('');
+  $('#form-message').val('');
+}
