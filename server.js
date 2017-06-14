@@ -1,25 +1,26 @@
 require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const nodemailer = require('nodemailer');
-const expressSanitizer = require('express-sanitizer');
-const bodyParser = require('body-parser');
-const request = require('request');
-const compression = require('compression');
-const RateLimit = require('express-rate-limit');
-const server = express();
-const emailLimiter = new RateLimit({
-  windowMs: 10*60*1000,
-  max: 10,
-  delay: 0,
-  handler: function(req, res) {
-    res.format({
-      json: function() {
-        res.status(429).json({status:'Email limit exceeded.<br> Please try again later.'});
-      }
-    });
-  }
-});
+const express = require('express'),
+      path = require('path'),
+      nodemailer = require('nodemailer'),
+      expressSanitizer = require('express-sanitizer'),
+      bodyParser = require('body-parser'),
+      compression = require('compression'),
+      RateLimit = require('express-rate-limit'),
+      aes256 = require('aes256'),
+      localConfigs = require('./configs.js'),
+      server = express(),
+      emailLimiter = new RateLimit({
+        windowMs: 10*60*1000,
+        max: 10,
+        delay: 0,
+        handler: function(req, res) {
+          res.format({
+            json: function() {
+              res.status(429).json({status:'Email limit exceeded.<br> Please try again later.'});
+            }
+          });
+        }
+      });
 
 server.enable('trust proxy');
 server.set('port', process.env.PORT || 3000 );
@@ -33,7 +34,7 @@ let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: process.env.EMAILUSER,
-        pass: process.env.EMAILPW
+        pass: decryptHash(process.env.EMAILPW)
     }
 });
 
@@ -90,7 +91,7 @@ function getFile(pathname) {
 // send email using nodemailer
 function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
   let mailOptions = {
-    to: process.env.FORWARDEMAIL,
+    to: process.env.FORWARDADDRESS,
     subject: emailSubject,
     html: '<strong>Customer name:</strong>  ' + sender + '<br><br><strong>Customer email:  </strong>' + senderAddress  + '<br><br><strong>Message:  </strong><br>' + emailMsg,
   }
@@ -104,4 +105,13 @@ function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
       res.status(200).json({ status:'Email sent!', error:null});
     }
   });
+}
+
+function decryptHash(hash){
+  let salt = new RegExp(localConfigs.salt, 'g'),
+      pepper = new RegExp(localConfigs.pepper, 'g'),
+      decrypted = aes256.decrypt(process.env.KEY, hash),
+      unsalted = decrypted.replace(salt, ''),
+      unpeppered = unsalted.replace(pepper, '');
+  return unpeppered;  
 }
