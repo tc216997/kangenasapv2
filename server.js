@@ -7,7 +7,6 @@ const express = require('express'),
       compression = require('compression'),
       RateLimit = require('express-rate-limit'),
       aes256 = require('aes256'),
-      localConfigs = require('./configs.js'),
       server = express(),
       emailLimiter = new RateLimit({
         windowMs: 10*60*1000,
@@ -108,8 +107,8 @@ function sendEmail(senderAddress, sender, emailSubject, emailMsg, res) {
 }
 
 function decryptHash(hash){
-  let salt = new RegExp(localConfigs.salt, 'g'),
-      pepper = new RegExp(localConfigs.pepper, 'g'),
+  let salt = new RegExp(process.env.SALT, 'g'),
+      pepper = new RegExp(process.env.PEPPER, 'g'),
       decrypted = aes256.decrypt(process.env.KEY, hash),
       unsalted = decrypted.replace(salt, ''),
       unpeppered = unsalted.replace(pepper, '');
