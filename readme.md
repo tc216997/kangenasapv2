@@ -1,1 +1,1 @@
-The source code for the website https://www.getkangenasap.com
+This is a site i made for a friend to learn web dev and build up a portfolio. Here is the live site at https://www.getkangenasap.com
