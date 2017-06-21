@@ -1,21 +1,21 @@
+require('dotenv').config();
 const request = require('request'),
       nodemailer = require('nodemailer'),
       aes256 = require('aes256'),
-      configs = require('./configs.js')
       tools = require('./tools.js')
 
 let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: configs.email_address,
-        pass: decryptHash(configs.emailPW)
+        user: process.env.WEBMEMAIL,
+        pass: decryptHash(process.env.WEBMPW)
     }
 });
 
 function decryptHash(hash){
-  let salt = new RegExp(configs.salt, 'g'),
-      pepper = new RegExp(configs.pepper, 'g'),
-      decrypted = aes256.decrypt(configs.key, hash),
+  let salt = new RegExp(process.env.WEBMSALT, 'g'),
+      pepper = new RegExp(process.env.WEBMPEPPER, 'g'),
+      decrypted = aes256.decrypt(process.env.WEBMKEY, hash),
       unsalted = decrypted.replace(salt, ''),
       unpeppered = unsalted.replace(pepper, '');
   return unpeppered; 
@@ -23,7 +23,7 @@ function decryptHash(hash){
 
 function sendEmail() {
   let mailOptions = {
-    to: configs.forward_email,
+    to: process.env.WEBMFORWARD,
     subject: 'Website is down',
     html: 'Website is unresponsive'
   }
@@ -43,7 +43,7 @@ module.exports = {
       request('https://www.getkangenasap.com', (err, response, body) => {
         console.log(response.statusCode);
         if (response.statusCode >= 400 && response.statusCode <= 600) {
-          console.log('Error send email');
+          console.log('Error');
           sendEmail();
         }
       });
