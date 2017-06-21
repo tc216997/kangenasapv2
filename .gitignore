@@ -3,4 +3,4 @@ node_modules/
 gulpfile.js
 local-test/
 configs.js
-configsSetter.js
+configSetter.js
