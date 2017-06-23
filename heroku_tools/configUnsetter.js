@@ -4,7 +4,7 @@ const exec = require('child_process').exec,
       path = require('path'),
       cmd = 'heroku config:unset ';
 
-fs.readFile(path.resolve(__dirname, 'unsetConfigs.txt'), 'utf8', (err, data) => {
+fs.readFile(path.join(__dirname, 'unsetConfigs.txt'), 'utf8', (err, data) => {
   let array = data.split('\r\n');
   let i = 0;
   array.map( item => {

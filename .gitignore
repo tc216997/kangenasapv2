@@ -3,4 +3,4 @@ node_modules/
 gulpfile.js
 local-test/
 configs.js
-unsetConfig.txt
+heroku_tools/unsetConfigs.txt

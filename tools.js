@@ -31,9 +31,12 @@ module.exports = {
               let mailOptions = {
                 to: process.env.FORWARDEMAIL,
                 subject: emailSubject,
-                html: '<strong>Customer name:</strong>  ' + sender + '<br><br><strong>Customer email:  </strong>' + senderAddress  + '<br><br><strong>Message:  </strong><br>' + emailMsg,
+                html: `
+                      <strong>Customer name:</strong> ${sender}
+                      <br><br><strong>Customer email:</strong> ${senderAddress}
+                      <br><br><strong>Message:</strong><br> ${emailMsg}
+                      `
               }
-  
               transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
                   res.status(500).json({ status:'Error! <br> Please try again', error:err});

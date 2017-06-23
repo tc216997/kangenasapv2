@@ -26,6 +26,7 @@
     "express-rate-limit": "^2.8.0",
     "express-sanitizer": "^1.0.2",
     "nodemailer": "^4.0.1",
+    "querystring": "^0.2.0",
     "request": "^2.81.0"
   },
   "devDependencies": {},
