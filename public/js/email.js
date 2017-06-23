@@ -95,6 +95,7 @@ function successHandler() {
 
 function errorHandler(response) {
   hideSendingMsg();
+  console.log(response)
   let errorMsg = response.responseJSON.status;
   $('#error-icon').css('display', 'block');
   $('#error-message').css('display', 'block');

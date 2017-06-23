@@ -2,9 +2,9 @@ require('dotenv').config();
 const exec = require('child_process').exec,
       fs = require('fs'),
       path = require('path'),
-      cmd = 'heroku config:set ';
+      cmd = 'heroku config:unset ';
 
-fs.readFile(path.resolve(__dirname, '.env'), 'utf8', (err, data) => {
+fs.readFile(path.resolve(__dirname, 'unsetConfigs.txt'), 'utf8', (err, data) => {
   let array = data.split('\r\n');
   let i = 0;
   array.map( item => {
@@ -14,4 +14,3 @@ fs.readFile(path.resolve(__dirname, '.env'), 'utf8', (err, data) => {
     });
   });
 });
-
